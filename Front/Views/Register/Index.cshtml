@@ -1,0 +1,66 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/Register.css" />
+</head>
+<body>
+    <div class="container">
+        <h2>User Register</h2>
+        <form action="Register/Register">
+            <div class="row">
+                <!-- Columna 1 -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="nombre">DNI:</label>
+                        <input type="text" class="form-control" id="dni" name="DNI" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellido">Fullname:</label>
+                        <input type="text" class="form-control" id="fullname" name="FullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Date of birth:</label>
+                        <input type="text" class="form-control" id="birthdate" name="BirthDate" required>
+                    </div>
+                </div>
+
+                <!-- Columna 2 -->
+                <div class="col-md-6">
+                    
+                    <div class="form-group">
+                        <label for="genre">Genre:</label>
+                        <select name="Genre" id="gender" class="form-control" required>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" name="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type= "password" class="form-control" id="password" name="Password" required>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                    <a href="/login" class="btn btn-secondary">Go back</a>
+                </div>
+                
+            </div>
+
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
