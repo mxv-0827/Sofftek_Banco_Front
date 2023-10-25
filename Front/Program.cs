@@ -1,7 +1,16 @@
+using Data.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddHttpClient("useAPI", config => 
+{
+    config.BaseAddress = new Uri(builder.Configuration["ServiceUrl:APIUrl"]);
+});
+
+builder.Services.AddSingleton<TokenService>();
 
 var app = builder.Build();
 
@@ -22,6 +31,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Login}/{action=Index}/{id?}");
 
 app.Run();

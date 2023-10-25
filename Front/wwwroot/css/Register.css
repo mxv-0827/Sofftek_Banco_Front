@@ -1,0 +1,20 @@
+﻿/* Estilo para centrar el contenido verticalmente */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Añade un margen superior para separar el formulario del borde superior */
+.container {
+    margin-top: 20px;
+}
+
+.button-group{
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
