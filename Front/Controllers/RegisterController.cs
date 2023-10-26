@@ -1,8 +1,11 @@
 ﻿using Data.Base;
 using Data.DTOs;
 using Data.Services;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
+using System.Security.Claims;
 
 namespace Front.Controllers
 {
@@ -34,6 +37,15 @@ namespace Front.Controllers
                 var objectToken = token as OkObjectResult;
 
                 _tokenService.SetToken(objectToken.Value.ToString());
+
+                var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
+                //Since objectToken only has the token, its not mandatory to create multiple claimtypes.
+                var mainClaim = new ClaimsPrincipal(identity);
+
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, mainClaim, new AuthenticationProperties
+                {
+                    ExpiresUtc = DateTime.Now.AddDays(30) //Too long in order to avoid problems.
+                });
 
                 return View("Views/Home/Index.cshtml");
             }
